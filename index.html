@@ -3,20 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Бережливая роботизация: строй свой завод будущего | Фабрика процессов</title>
+<title>Бережливая роботизация: строй свой завод будущего | Фабрика процессов — v11</title>
 <meta name="description" content="Тренинг на учебной площадке «Фабрика процессов»: диагностика — оптимизация — роботизация на модельном участке за один день.">
 
 <!--
   ================================================================
-  LANDING v9
+  LANDING v11
   ----------------------------------------------------------------
-  Что изменилось относительно v8:
-    Оформление фона грипперов приведено к стилю v5:
-      • тёмный полупрозрачный фон (rgba(255,255,255,.06));
-      • тонкая светлая рамка rgba(140,190,240,.20);
-      • скругление border-radius:16px вместо круглой белой плитки;
-      • мягкая тень, hover — подсветка рамки и фона.
-    Позиционирование грипперов дугой справа сохранено без изменений.
+  Что изменилось относительно v10:
+    Финальная строка расписания «17:45 – 18:00 · Завершение тренинга»
+    оформлена так же, как все остальные строки программы
+    (убран отдельный стиль .slot.final).
 
   Структура папок:
     мой-проект/
@@ -30,6 +27,7 @@
         ├── icon-vest.png
         ├── icon-materials.png
         ├── icon-certificate.png
+        ├── icon-ending.png
         ├── exercise-human-vs-conveyor.png
         ├── icon-warning.png
         ├── virtual-factory.png
@@ -38,8 +36,8 @@
         ├── qr-2.png
         ├── qr-3.png
         ├── qr-signup.png
-        ├── qr-mpt.tatarstan.png
-        ├── Cobot.png
+        ├── qr-mpt-tatarstan.png
+        ├── cobot.png
         ├── center_of_mass.png
         ├── gripper-1.png
         ├── gripper-2.png
@@ -301,6 +299,39 @@
   .section-dark .sec-head p,
   .cobot-section .sec-head p{color:#a9c0d8;}
 
+  /* ---- Подзаголовок внутри секции ---- */
+  .subhead{
+    max-width:960px;
+    margin:56px auto 28px;
+    display:flex;
+    align-items:center;
+    gap:22px;
+  }
+  .subhead .line{
+    flex:1;
+    height:1px;
+    background:linear-gradient(90deg, transparent, var(--grey-200) 30%, var(--grey-200) 70%, transparent);
+  }
+  .subhead h3{
+    margin:0;
+    font-size:clamp(18px,2vw,22px);
+    font-weight:800;
+    color:var(--navy-800);
+    letter-spacing:-.2px;
+    white-space:nowrap;
+  }
+  .subhead h3::before{
+    content:"";
+    display:inline-block;
+    width:10px;height:10px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#4a90d9,#2f6fb5);
+    margin-right:14px;
+    vertical-align:middle;
+    transform:translateY(-2px);
+    box-shadow:0 0 0 4px rgba(74,144,217,.16);
+  }
+
   /* ============ GOAL ============ */
   .goal-card{
     max-width:940px;
@@ -429,7 +460,10 @@
     grid-template-columns:120px 1fr;
     gap:32px;
     align-items:center;
+    max-width:960px;
+    margin:0 auto;
   }
+  .fmt-wide + .fmt-wide{margin-top:20px;}
   .fmt-wide .icon{
     width:110px;height:110px;
     border-radius:50%;
@@ -443,6 +477,11 @@
     font-size:18px;
     font-weight:800;
     color:var(--navy-800);
+  }
+  .fmt-wide p{
+    margin:0;
+    color:var(--grey-500);
+    font-size:15.3px;
   }
   .chips{
     display:flex;
@@ -624,7 +663,7 @@
   .eco.accent p{color:#c2d6ea;}
 
   /* ============================================================
-     БЛОК «ТИРАЖИРОВАНИЕ + КОБОТ» (v9)
+     БЛОК «ТИРАЖИРОВАНИЕ + КОБОТ»
      ============================================================ */
   .cobot-section{
     background:
@@ -645,7 +684,6 @@
     min-height:600px;
   }
 
-  /* ---- ЛЕВАЯ колонка: вертикальные карточки ---- */
   .scale-benefits-vertical{
     display:flex;
     flex-direction:column;
@@ -689,7 +727,6 @@
     line-height:1.4;
   }
 
-  /* ---- ЦЕНТР: кобот ---- */
   .cobot-main{
     position:relative;
     display:flex;
@@ -722,23 +759,18 @@
     50%{transform:translateY(-12px);}
   }
 
-  /* ---- ПРАВАЯ колонка: грипперы + ТТХ ---- */
   .cobot-right{
     display:flex;
     flex-direction:column;
     gap:26px;
   }
 
-  /* Грипперы дугой */
   .grippers-arc{
     position:relative;
     flex:1;
     min-height:320px;
   }
 
-  /* ============================================================
-     ОФОРМЛЕНИЕ ГРИППЕРОВ — стиль v5
-     ============================================================ */
   .gripper{
     position:absolute;
     width:150px;
@@ -757,12 +789,10 @@
     transform:translateY(-3px);
     box-shadow:0 22px 48px rgba(0,0,0,.5);
   }
-  /* Дугой на правой половине — позиционирование сохранено */
   .gripper.g1{top:45%;     left:35%;}
   .gripper.g2{top:45%;   left:70%;}
   .gripper.g3{top:45%;   left:0%;}
 
-  /* Панель ТТХ */
   .specs-panel{
     position:relative;
     background:rgba(255,255,255,.035);
@@ -1143,7 +1173,7 @@
   }
 
   /* ============================================================
-     SUPPORT (v9)
+     SUPPORT
      ============================================================ */
   .support{
     background:#0b1b33;
@@ -1296,6 +1326,16 @@
     .fmt-wide .icon{margin:0 auto;}
     .chips{justify-content:center;}
 
+    .subhead{
+      flex-direction:column;
+      align-items:flex-start;
+      gap:12px;
+      margin-top:44px;
+    }
+    .subhead .line{width:100%;flex:none;}
+    .subhead h3{white-space:normal;}
+    .subhead h3::before{transform:translateY(-1px);}
+
     .topbar-logo{height:28px;}
     .topbar{font-size:12px;}
     .topbar .wrap{flex-wrap:wrap;}
@@ -1439,7 +1479,7 @@
 <section id="format">
   <div class="wrap">
     <div class="sec-head">
-      <span class="sec-tag">Формат проведения</span>
+      <span class="sec-tag">Параметры тренинга</span>
       <h2>Всё, что нужно для погружения в тему</h2>
     </div>
 
@@ -1474,13 +1514,26 @@
       </div>
     </div>
 
-    <div class="fmt-wide" style="margin-top:24px;">
+    <!-- ПОДРАЗДЕЛ «В завершении тренинга» -->
+    <div class="subhead">
+      <span class="line"></span>
+      <h3>В завершении тренинга:</h3>
+      <span class="line"></span>
+    </div>
+
+    <div class="fmt-wide">
+      <div class="icon"><img src="images/icon-ending.png" alt="Презентация реальных кейсов предприятия"></div>
+      <div>
+        <h4>Презентация реальных кейсов предприятия</h4>
+        <p>Разбираем примеры роботизации из практики предприятий и обсуждаем сценарии применения на вашем производстве.</p>
+      </div>
+    </div>
+
+    <div class="fmt-wide">
       <div class="icon"><img src="images/icon-certificate.png" alt="Сертификат"></div>
       <div>
         <h4>Сертификат по итогам тренинга</h4>
-        <p style="margin:0;color:var(--grey-500);font-size:15.3px;">
-          Документ подтверждает прохождение практического обучения на учебной площадке «Фабрика процессов».
-        </p>
+        <p>Документ подтверждает прохождение практического обучения на учебной площадке «Фабрика процессов».</p>
       </div>
     </div>
   </div>
@@ -1614,7 +1667,7 @@
 </section>
 
 <!-- ============================================================
-     ОБЪЕДИНЁННЫЙ БЛОК: ТИРАЖИРОВАНИЕ + КОБОТ (v9)
+     ОБЪЕДИНЁННЫЙ БЛОК: ТИРАЖИРОВАНИЕ + КОБОТ
      ============================================================ -->
 <section class="cobot-section" id="scale">
   <div class="wrap">
@@ -1625,7 +1678,6 @@
     </div>
 
     <div class="cobot-layout">
-      <!-- ЛЕВО: 3 вертикальные карточки -->
       <div class="scale-benefits-vertical">
         <article class="scale-benefit">
           <div class="symbol">↓</div>
@@ -1643,12 +1695,10 @@
         </article>
       </div>
 
-      <!-- ЦЕНТР: кобот -->
       <div class="cobot-main">
-        <img class="cobot-img" src="images/Cobot.png" alt="Коллаборативный робот">
+        <img class="cobot-img" src="images/cobot.png" alt="Коллаборативный робот">
       </div>
 
-      <!-- ПРАВО: грипперы дугой + ТТХ -->
       <div class="cobot-right">
         <div class="grippers-arc">
           <img class="gripper g1" src="images/gripper-1.png" alt="Рабочий орган робота">
@@ -1758,6 +1808,11 @@
         <div class="time">16:15 – 17:45</div>
         <div class="body">Модуль 4. Дорожная карта: от пилота к тиражированию</div>
       </div>
+
+      <div class="slot">
+        <div class="time">17:45 – 18:00</div>
+        <div class="body">Завершение тренинга</div>
+      </div>
     </div>
   </div>
 </section>
@@ -1827,7 +1882,7 @@
   </div>
 </section>
 
-<!-- ============ ПОДДЕРЖКА (v9) ============ -->
+<!-- ============ ПОДДЕРЖКА ============ -->
 <div class="support">
   <div class="wrap">
     <div class="support-row">
@@ -1840,7 +1895,7 @@
       </div>
 
       <a class="support-qr-link" href="https://mpt.tatarstan.ru/" target="_blank" rel="noopener" aria-label="Министерство промышленности и торговли Республики Татарстан">
-        <img class="support-qr" src="images/qr-mpt.tatarstan.png" alt="QR-код Министерства промышленности и торговли Республики Татарстан">
+        <img class="support-qr" src="images/qr-mpt-tatarstan.png" alt="QR-код Министерства промышленности и торговли Республики Татарстан">
       </a>
     </div>
   </div>
